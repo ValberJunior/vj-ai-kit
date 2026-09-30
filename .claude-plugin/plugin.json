@@ -1,0 +1,10 @@
+{
+  "name": "vj-ai-kit",
+  "version": "1.0.0",
+  "description": "Skills de animação, design de interfaces e engenharia de UI, além de referências de design systems de grandes marcas.",
+  "author": {
+    "name": "Valber Junior"
+  },
+  "license": "MIT",
+  "keywords": ["design", "animation", "ui", "ux", "react-native", "swift", "design-systems"]
+}
