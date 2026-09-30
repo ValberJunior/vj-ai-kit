@@ -49,15 +49,14 @@ npx skills@latest add ValberJunior/vj-ai-kit
 
 ## Publicar uma nova versão
 
-1. Atualize `version` em `.claude-plugin/plugin.json` e em `.claude-plugin/marketplace.json`.
-2. Faça commit e crie a tag com o mesmo número:
+A versão é automática. Use [Conventional Commits](https://www.conventionalcommits.org/) nas mensagens que vão para a `main`:
 
-```bash
-git tag v1.0.1
-git push origin v1.0.1
-```
+- `feat:` sobe a minor (1.0.0 → 1.1.0)
+- `fix:` sobe a patch (1.1.0 → 1.1.1)
+- `feat!:` ou `BREAKING CHANGE:` sobe a major
+- `docs:`, `chore:`, `refactor:` etc. não geram release
 
-A GitHub Action [release.yml](./.github/workflows/release.yml) empacota o plugin e anexa o `vj-ai-kit.plugin` na Release. Ela falha se a tag não bater com a versão do `plugin.json`.
+O [release-please](https://github.com/googleapis/release-please) mantém aberto um PR "chore(main): release X.Y.Z" com a versão nova e o `CHANGELOG.md`. Ao mergear esse PR, a Action [release.yml](./.github/workflows/release.yml) cria a tag, a Release e anexa o `vj-ai-kit.plugin`. Não edite a versão à mão.
 
 Para gerar o pacote manualmente:
 
@@ -83,6 +82,8 @@ tar -a -cf vj-ai-kit.plugin .claude-plugin skills designs README.md LICENSE perf
 | [mobile-native](./skills/mobile-native/SKILL.md) | Faz o web app parecer nativo no celular: hover preso, bug do 100vh, zoom em inputs, safe areas etc. |
 | [ask-sonner](./skills/ask-sonner/SKILL.md) | Guia para a biblioteca de toasts [Sonner](https://sonner.emilkowal.ski). |
 | [design-references](./skills/design-references/SKILL.md) | Consulta os design systems da pasta `designs/` como ponto de partida visual. |
+| [ui-fundamentals](./skills/ui-fundamentals/SKILL.md) | Princípios universais de UI e UX: hierarquia, espaçamento, tipografia, leis de UX e acessibilidade WCAG com limites numéricos. |
+| [section-layouts](./skills/section-layouts/SKILL.md) | Catálogo de wireframes de seções (hero, pricing, FAQ, footer, login etc.) para escolher e variar o layout. |
 
 Também incluído: [performance-cheatsheet.md](./performance-cheatsheet.md), uma tabela rápida de problemas comuns de performance em animação e suas soluções.
 
@@ -104,6 +105,8 @@ A pasta [designs/](./designs) reúne interpretações inspiradas na linguagem vi
 ## Créditos
 
 As skills de animação e design de interface (`emil-design-eng`, `animate`, `animate-expo`, `review-animations`, `improve-animations`, `find-animation-opportunities`, `animation-vocabulary`, `apple-design`, `write-swift`, `pick-ui-library`, `prototype`, `mobile-native`, `ask-sonner`) vêm do repositório [emilkowalski/skills](https://github.com/emilkowalski/skills), de Emil Kowalski, licenciado sob MIT. Veja o [aiforui.dev](https://aiforui.dev/skills) para mais.
+
+As skills `ui-fundamentals` e `section-layouts` (incluindo os wireframes SVG) foram adaptadas do repositório [typeui](https://github.com/bergside/typeui), de Bergside LLC, licenciado sob MIT.
 
 Os arquivos da pasta `designs/` foram obtidos em [designmd.co](https://www.designmd.co/). Marcas e nomes pertencem aos seus respectivos donos, e esses arquivos não são afiliados a nenhuma dessas empresas.
 
